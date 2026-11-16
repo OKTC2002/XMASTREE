@@ -1,0 +1,173 @@
+:root {
+  --red: #c8102e;
+  --red-dark: #9d0c24;
+  --green: #14532d;
+  --green-dark: #0b2e1c;
+  --gold: #f5b82e;
+  --cream: #fff8ec;
+  --snow: #ffffff;
+  --ink: #2b2b2b;
+  --radius: 18px;
+  --shadow: 0 8px 24px rgba(11, 46, 28, .15);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--cream);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--red); }
+h1, h2, h3, .brand-text { font-family: "Mountains of Christmas", "Georgia", serif; }
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); color: var(--green); text-align: center; margin: 0 0 1.5rem; line-height: 1.15; }
+h3 { font-size: 1.6rem; color: var(--red); margin: .25rem 0 .5rem; }
+.wrap { width: min(1120px, 92%); margin-inline: auto; }
+.narrow { width: min(760px, 92%); }
+.center { text-align: center; }
+.small { font-size: .92rem; opacity: .85; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 8px; top: 8px; z-index: 100; background: #fff; padding: .5rem 1rem; }
+
+#snow { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; opacity: 0; transition: opacity .5s; }
+#snow.on { opacity: 1; }
+
+/* Top bar */
+.topbar { background: var(--green-dark); color: #fff; font-size: .95rem; }
+.topbar-inner { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; justify-content: center; padding: .5rem 0; }
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { color: var(--gold); }
+
+/* Header */
+.site-header { background: var(--red); color: #fff; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 0 .6rem; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .9rem; color: #fff; text-decoration: none; }
+.badge { width: 96px; height: 96px; flex: none; filter: drop-shadow(0 3px 6px rgba(0,0,0,.35)); }
+.brand-text { font-size: 1.9rem; font-weight: 700; line-height: 1; }
+.brand-text small { display: block; font-family: "Nunito", sans-serif; font-size: .72rem; font-weight: 600; margin-top: .3rem; opacity: .95; }
+nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+nav a { color: #fff; text-decoration: none; font-weight: 800; }
+nav a:not(.btn):hover { color: var(--gold); }
+
+/* Buttons */
+.btn { display: inline-block; background: var(--gold); color: var(--green-dark); font-weight: 800; padding: .85rem 1.8rem; border-radius: 999px; border: 0; text-decoration: none; font-size: 1.05rem; cursor: pointer; font-family: inherit; box-shadow: 0 4px 0 #c78d0f; transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 #c78d0f; }
+.btn-small { padding: .45rem 1.1rem; font-size: .95rem; color: var(--green-dark) !important; }
+.btn-ghost { background: transparent; color: #fff; border: 2px solid #fff; box-shadow: none; }
+.btn-ghost:hover { background: rgba(255,255,255,.15); box-shadow: none; }
+
+/* Blinking Christmas lights */
+.lights { display: flex; justify-content: space-around; margin: 0; padding: 0 1%; position: relative; height: 34px; overflow: hidden; }
+.lights::before { content: ""; position: absolute; left: 0; right: 0; top: 4px; height: 3px; background: #1b1b1b; border-radius: 3px; }
+.lights i { position: relative; display: block; width: 14px; height: 22px; margin-top: 6px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; background: var(--c); box-shadow: 0 0 10px 3px var(--c); animation: chase 1.2s infinite linear; animation-delay: var(--d); transform-origin: 50% 0; }
+.lights i::before { content: ""; position: absolute; left: 3px; top: -5px; width: 8px; height: 6px; background: #333; border-radius: 2px; }
+.lights i:nth-child(odd) { margin-top: 10px; }
+@keyframes chase {
+  0%   { opacity: 1; filter: brightness(1.4); box-shadow: 0 0 16px 6px var(--c); transform: rotate(-9deg) translateX(-1.5px); }
+  4%   { transform: rotate(9deg) translateX(1.5px); }
+  8%   { transform: rotate(-8deg) translateX(-1.5px); }
+  12%  { transform: rotate(8deg) translateX(1.5px); }
+  16%  { transform: rotate(-6deg) translateX(-1px); }
+  20%  { transform: rotate(5deg) translateX(1px); }
+  24%  { opacity: 1; filter: brightness(1.3); transform: none; }
+  34%, 100% { opacity: .85; filter: brightness(.9); box-shadow: 0 0 8px 2px var(--c); transform: none; }
+}
+@keyframes chase-still {
+  0%, 22% { opacity: 1; filter: brightness(1.4); box-shadow: 0 0 16px 6px var(--c); }
+  34%, 100% { opacity: .85; filter: brightness(.9); box-shadow: 0 0 8px 2px var(--c); }
+}
+.lights-form { background: transparent; margin-bottom: 1.5rem; }
+
+/* Hero */
+.hero { position: relative; min-height: 78vh; display: grid; align-items: center; background: url("images/hero-sisters.jpg") center 35% / cover no-repeat; color: #fff; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,46,28,.82) 0%, rgba(11,46,28,.55) 50%, rgba(11,46,28,.1) 100%); }
+.hero-content { position: relative; padding: 4rem 0; max-width: 1120px; }
+.hero-content > * { max-width: 760px; }
+.hero-content .lead, .hero-content .hero-note { max-width: 600px; }
+.eyebrow { display: inline-block; background: var(--red); padding: .3rem 1rem; border-radius: 999px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; font-size: .85rem; margin: 0 0 1rem; }
+.hero h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.05; margin: 0 0 1rem; text-shadow: 0 3px 12px rgba(0,0,0,.45); }
+.hero h1 span { color: var(--gold); display: block; }
+.lead { font-size: 1.25rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0 1rem; }
+.hero-note { font-weight: 700; color: var(--gold); }
+
+/* Sections */
+.section { padding: 4.5rem 0; position: relative; }
+.section.alt { background: var(--green); color: #fff; }
+.section.alt h2 { color: #fff; }
+.section.story { background: var(--snow); }
+
+.cards { display: grid; gap: 1.5rem; }
+.cards.three { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.cards.four { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card { background: #fff; border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); border-top: 6px solid var(--red); text-align: center; }
+.cards .card:nth-child(even) { border-top-color: var(--green); }
+.card .icon { font-size: 2.6rem; line-height: 1; }
+.card p { margin: .4rem 0; }
+
+.split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+.split h2 { text-align: left; }
+.thanks { font-weight: 800; color: var(--red); }
+.sketch { margin: 0; }
+.sketch img { width: 100%; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; padding: 0; margin: 1.25rem 0; }
+.chips li { background: var(--cream); color: var(--green); font-weight: 800; padding: .6rem 1.4rem; border-radius: 999px; border: 3px solid var(--gold); font-size: 1.15rem; }
+.wide-photo { margin: 2.5rem auto 0; max-width: 900px; }
+.wide-photo img { border-radius: var(--radius); border: 6px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35); width: 100%; }
+
+.gallery { columns: 3 260px; column-gap: 1rem; }
+.gallery img { width: 100%; margin-bottom: 1rem; border-radius: 14px; border: 5px solid #fff; box-shadow: var(--shadow); break-inside: avoid; transition: transform .25s; }
+.gallery img:hover { transform: rotate(-1.5deg) scale(1.02); }
+#gallery { background: var(--cream); color: var(--ink); }
+#gallery h2 { color: var(--green); }
+
+.quote { background: var(--red); color: #fff; text-align: center; }
+blockquote { margin: 0 auto; max-width: 760px; }
+blockquote p { font-family: "Mountains of Christmas", serif; font-size: clamp(1.5rem, 3.5vw, 2.2rem); line-height: 1.3; margin: 0 0 1rem; }
+cite { font-style: normal; font-weight: 800; color: var(--gold); }
+
+/* Form */
+.schedule { background: var(--green-dark); color: #fff; padding-top: 1.5rem; }
+.schedule h2 { color: #fff; }
+form { background: var(--cream); color: var(--ink); border-radius: var(--radius); padding: 2rem; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); border: 4px solid var(--gold); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; margin-bottom: 1rem; }
+label { display: block; font-weight: 800; color: var(--green); }
+label small { display: block; font-weight: 400; color: #666; margin-top: .2rem; font-size: .85rem; }
+input, select, textarea { width: 100%; margin-top: .3rem; padding: .7rem .85rem; border: 2px solid #cdbfa5; border-radius: 10px; font: inherit; background: #fff; }
+input:focus, select:focus, textarea:focus, .btn:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-color: var(--green); }
+.hp { position: absolute; left: -9999px; }
+form .btn { margin-top: 1.25rem; width: 100%; }
+#form-status { text-align: center; font-weight: 800; min-height: 1.5rem; margin: .75rem 0 0; }
+#form-status.ok { color: var(--green); }
+#form-status.err { color: var(--red); }
+
+/* Footer */
+.site-footer { background: #07180f; color: #e8e2d2; padding: 2.5rem 0; font-size: .95rem; }
+.site-footer a { color: var(--gold); }
+.site-footer p { margin: .3rem 0; }
+.footer-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; text-align: center; }
+.footer-inner strong { font-family: "Mountains of Christmas", serif; font-size: 1.6rem; color: #fff; }
+
+@media (max-width: 1000px) {
+  .site-header { position: static; }
+}
+
+@media (max-width: 800px) {
+  .split { grid-template-columns: 1fr; }
+  .split h2 { text-align: center; }
+  .grid { grid-template-columns: 1fr; }
+  .header-inner { justify-content: center; }
+  nav { justify-content: center; gap: .9rem; }
+  .hero-overlay { background: rgba(11,46,28,.7); }
+  .site-header { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lights i { animation-name: chase-still; }
+}
