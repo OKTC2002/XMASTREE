@@ -10,6 +10,19 @@ document.querySelectorAll('.lights').forEach((strand) => {
   }
 });
 
+// Keep anchor-link scroll offset in sync with the sticky header's real height,
+// so nav jumps don't land behind it if header content ever changes size.
+const siteHeader = document.querySelector('.site-header');
+function updateHeaderOffset() {
+  if (siteHeader) {
+    document.documentElement.style.setProperty('--header-h', `${siteHeader.offsetHeight}px`);
+  }
+}
+updateHeaderOffset();
+window.addEventListener('resize', updateHeaderOffset);
+window.addEventListener('load', updateHeaderOffset);
+if (document.fonts) document.fonts.ready.then(updateHeaderOffset);
+
 // Falling snow, started by the first mouse move (or touch / key press)
 (() => {
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -89,6 +102,21 @@ document.querySelectorAll('.lights').forEach((strand) => {
 // Date picker starts today
 const dateInput = document.getElementById('visit-date');
 dateInput.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+// Click-to-reveal story dialogs (story card / sleigh button trigger a matching dialog)
+document.querySelectorAll('[data-dialog-target]').forEach((trigger) => {
+  const dialog = document.getElementById(trigger.dataset.dialogTarget);
+  if (!dialog) return;
+  trigger.addEventListener('click', () => dialog.showModal());
+});
+document.querySelectorAll('dialog').forEach((dialog) => {
+  dialog.querySelectorAll('[data-close-dialog]').forEach((btn) => {
+    btn.addEventListener('click', () => dialog.close());
+  });
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+});
 
 // Submit to Formspree without leaving the page
 const form = document.getElementById('visit-form');
