@@ -54,30 +54,29 @@
         <a href="#fun">Family Fun</a>
         <a href="#gallery">Gallery</a>
         <a class="btn btn-small" href="#schedule">Schedule a Visit</a>
-        <button type="button" class="snowflake-btn" id="santa-card"
-          aria-haspopup="dialog" aria-controls="santa-dialog"
-          data-dialog-target="santa-dialog"
-          aria-label="Santa Secrets: click to reveal three Christmas Eve secrets">
-          <svg class="snowflake-svg" viewBox="0 0 100 100"
-            aria-hidden="true" focusable="false">
-            <defs>
-              <g id="flakeArm">
-                <path d="M50,50 L50,6" />
-                <path d="M50,28 L62.6,14.4 M50,28 L37.4,14.4" />
-              </g>
-            </defs>
-            <g class="snowflake-arms">
-              <use href="#flakeArm" />
-              <use href="#flakeArm" transform="rotate(60 50 50)" />
-              <use href="#flakeArm" transform="rotate(120 50 50)" />
-              <use href="#flakeArm" transform="rotate(180 50 50)" />
-              <use href="#flakeArm" transform="rotate(240 50 50)" />
-              <use href="#flakeArm" transform="rotate(300 50 50)" />
-            </g>
-            <text class="snowflake-text" text-anchor="middle">
-              <tspan x="50" y="44">Santa</tspan>
-              <tspan x="50" y="65">Secrets</tspan>
-            </text>
+        <button type="button" class="tree-tips-btn" id="tips-card"
+          aria-haspopup="dialog" aria-controls="tips-dialog"
+          data-dialog-target="tips-dialog"
+          aria-label="Tree Tips: click to reveal how to keep your tree fresh">
+          <svg class="treetip-svg" viewBox="0 0 80 130" aria-hidden="true"
+            focusable="false">
+            <path class="treetip-star" d="M40,-8 L43,0 L40,8 L37,0 Z" />
+            <path class="treetip-star" d="M32,0 L40,-3 L48,0 L40,3 Z" />
+            <path class="treetip-tier" d="M40,2 L58,42 L22,42 Z" />
+            <path class="treetip-tier" d="M40,24 L66,78 L14,78 Z" />
+            <path class="treetip-tier" d="M40,54 L74,112 L6,112 Z" />
+            <rect class="treetip-trunk" x="34" y="112" width="12"
+              height="14" rx="2" />
+            <circle class="treetip-dot treetip-dot-red" cx="28" cy="68"
+              r="2.6" />
+            <circle class="treetip-dot treetip-dot-gold" cx="54" cy="64"
+              r="2.6" />
+            <circle class="treetip-dot treetip-dot-gold" cx="24" cy="98"
+              r="2.8" />
+            <circle class="treetip-dot treetip-dot-red" cx="56" cy="100"
+              r="2.8" />
+            <text class="treetip-text" text-anchor="middle"
+              transform="rotate(-90 40 65)" x="40" y="68">TREE TIPS</text>
           </svg>
         </button>
       </nav>
@@ -162,7 +161,7 @@
     </section>
 
     <section class="section story-teaser">
-      <div class="wrap">
+      <div class="wrap split">
         <button type="button" class="story-card" id="scent-card"
           aria-haspopup="dialog" aria-controls="scent-dialog"
           data-dialog-target="scent-dialog">
@@ -176,6 +175,48 @@
             <span class="story-card-cta">Click to read &#8594;</span>
           </span>
         </button>
+        <div class="santa-teaser">
+          <button type="button" class="snowflake-btn" id="santa-card"
+            aria-haspopup="dialog" aria-controls="santa-dialog"
+            data-dialog-target="santa-dialog"
+            aria-label="Santa Secrets: click to reveal three Christmas Eve secrets">
+            <svg class="snowflake-svg" viewBox="-6 -28 112 134"
+              aria-hidden="true" focusable="false">
+              <defs>
+                <g id="flakeArm">
+                  <path d="M50,50 L50,6" />
+                  <path d="M50,28 L62.6,14.4 M50,28 L37.4,14.4" />
+                </g>
+                <radialGradient id="ballGradient" cx="35%" cy="28%"
+                  r="80%">
+                  <stop class="grad-start" offset="0%" />
+                  <stop class="grad-mid" offset="55%" />
+                  <stop class="grad-end" offset="100%" />
+                </radialGradient>
+              </defs>
+              <circle class="ornament-loop" cx="50" cy="-19" r="6" />
+              <rect class="ornament-cap" x="42" y="-8" width="16"
+                height="12" rx="3" />
+              <circle class="ornament-ball" cx="50" cy="50" r="48" />
+              <ellipse class="ornament-band" cx="50" cy="50" rx="48"
+                ry="8" />
+              <ellipse class="ornament-shine" cx="32" cy="26" rx="12"
+                ry="18" transform="rotate(-18 32 26)" />
+              <g class="snowflake-arms">
+                <use href="#flakeArm" />
+                <use href="#flakeArm" transform="rotate(60 50 50)" />
+                <use href="#flakeArm" transform="rotate(120 50 50)" />
+                <use href="#flakeArm" transform="rotate(180 50 50)" />
+                <use href="#flakeArm" transform="rotate(240 50 50)" />
+                <use href="#flakeArm" transform="rotate(300 50 50)" />
+              </g>
+              <text class="snowflake-text" text-anchor="middle">
+                <tspan x="50" y="44">Santa</tspan>
+                <tspan x="50" y="65">Secrets</tspan>
+              </text>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -333,6 +374,79 @@
       </div>
     </dialog>
 
+    <dialog class="story-dialog" id="tips-dialog"
+      aria-labelledby="tips-dialog-title">
+      <div class="story-dialog-inner">
+        <button type="button" class="dialog-back" data-close-dialog
+          aria-label="Back to main page">
+          <span aria-hidden="true">&#8592;</span> Back
+        </button>
+        <div class="story-dialog-content">
+          <figure class="story-figure">
+            <img src="images/best-tree-4.jpg"
+              alt="A young snow-dusted evergreen tree" width="700"
+              height="1081" loading="lazy">
+          </figure>
+          <div class="story-text">
+            <p class="eyebrow">A Primer for Tree Buyers</p>
+            <h2 id="tips-dialog-title">Tree Tips: Keep Your Christmas
+              Tree Fresh All Season</h2>
+            <div class="secret-cards">
+              <article class="card secret-card">
+                <div class="icon" aria-hidden="true">&#129690;</div>
+                <div>
+                  <h3>Make a Fresh Cut</h3>
+                  <p>Before you set up your tree, saw about &frac12;
+                    inch off the bottom of the trunk. This opens the
+                    pores back up so the tree can drink water again,
+                    even if it's been a few hours since it was cut at
+                    the farm.</p>
+                </div>
+              </article>
+              <article class="card secret-card">
+                <div class="icon" aria-hidden="true">&#128167;</div>
+                <div>
+                  <h3>Water It Right Away</h3>
+                  <p>Get your tree into a sturdy stand with plenty of
+                    plain water within an hour of the fresh cut, and
+                    never let the water level drop below the base of
+                    the trunk. A tree can drink a gallon or more in
+                    the first 24 hours!</p>
+                </div>
+              </article>
+              <article class="card secret-card">
+                <div class="icon" aria-hidden="true">&#128293;</div>
+                <div>
+                  <h3>Keep It Cool</h3>
+                  <p>Place your tree away from fireplaces, heating
+                    vents, and direct sunlight. Warm, dry air pulls
+                    moisture out of the needles faster and makes your
+                    tree thirsty &mdash; and more flammable.</p>
+                </div>
+              </article>
+              <article class="card secret-card">
+                <div class="icon" aria-hidden="true">&#9989;</div>
+                <div>
+                  <h3>Check the Water Daily</h3>
+                  <p>A healthy tree can soak up water fast those first
+                    few days. Check the stand every morning and
+                    evening, and top it off so the cut end always
+                    stays submerged.</p>
+                </div>
+              </article>
+            </div>
+            <p class="thanks">With a little TLC, your REAL Christmas
+              tree can stay fresh and fragrant all the way through New
+              Year's!</p>
+            <button type="button" class="btn" data-close-dialog>
+              <span aria-hidden="true">&#8592;</span> Back to Main
+              Page
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
     <section class="section alt" id="trees">
       <div class="wrap">
         <h2>Tall, Small, We've Got 'em All</h2>
@@ -407,7 +521,7 @@
           <img src="images/dad-and-daughter.jpg"
             alt="Girl sitting on a plaid blanket with an ornament"
             width="1000" height="1500" loading="lazy">
-          <img src="images/stream_kids.jpg"
+          <img src="images/large-snowy-trees.jpg"
             alt="Dad and daughter cutting a tree together" width="1000"
             height="1500" loading="lazy">
           <img src="images/red-dress.jpg"
@@ -512,8 +626,10 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div class="footer-brand">
-        <img class="footer-badge" src="images/logo.png" alt=""
-          width="513" height="486" loading="lazy">
+        <a href="#top" aria-label="Back to top">
+          <img class="footer-badge" src="images/logo.png" alt=""
+            width="513" height="486" loading="lazy">
+        </a>
         <div>
           <strong>OK Tree Corral</strong>
           <p>Choose &amp; Cut Xmas Trees in Omak since 2002</p>

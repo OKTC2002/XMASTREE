@@ -237,16 +237,18 @@ nav a:not(.btn):hover {
   box-shadow: none;
 }
 
-/* Santa Secrets nav button: an enlarged version of the falling-snow snowflake with text on top */
+/* Santa Secrets: a hanging Christmas ornament with a snowflake sticker and text */
 .snowflake-btn {
   display: inline-flex;
   flex: none;
-  width: 124px;
-  height: 124px;
+  width: 172px;
+  height: 172px;
   padding: 0;
   border: 0;
   background: none;
   cursor: pointer;
+  transform-origin: 50% 7%;
+  animation: ornament-sway 4.5s ease-in-out infinite;
 }
 
 .snowflake-svg {
@@ -258,7 +260,45 @@ nav a:not(.btn):hover {
 
 .snowflake-btn:hover .snowflake-svg,
 .snowflake-btn:focus-visible .snowflake-svg {
-  transform: rotate(14deg) scale(1.08);
+  transform: rotate(10deg) scale(1.08);
+}
+
+@keyframes ornament-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+.grad-start { stop-color: #ff7a7a; }
+.grad-mid { stop-color: var(--red); }
+.grad-end { stop-color: var(--red-dark); }
+
+.ornament-loop {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 4;
+}
+
+.ornament-cap {
+  fill: var(--gold);
+  stroke: var(--green-dark);
+  stroke-width: 1;
+}
+
+.ornament-ball {
+  fill: url(#ballGradient);
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, .35));
+}
+
+.ornament-band {
+  fill: var(--gold);
+  opacity: .85;
+}
+
+.ornament-shine {
+  fill: #fff;
+  opacity: .3;
 }
 
 .snowflake-arms {
@@ -267,7 +307,7 @@ nav a:not(.btn):hover {
   stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 3px rgba(40, 80, 120, .55));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .4));
 }
 
 .snowflake-text {
@@ -285,6 +325,86 @@ nav a:not(.btn):hover {
   outline: 3px solid var(--gold);
   outline-offset: 4px;
   border-radius: 50%;
+}
+
+/* Tree Tips: a tall evergreen icon that zooms in after the page loads */
+.tree-tips-btn {
+  display: inline-flex;
+  flex: none;
+  width: 76px;
+  height: 124px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(.3);
+  animation: treetip-zoom-in .9s cubic-bezier(.34, 1.56, .64, 1) 1.1s both;
+}
+
+@keyframes treetip-zoom-in {
+  0% { opacity: 0; transform: scale(.3); }
+  70% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.treetip-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transition: transform .25s ease;
+}
+
+.tree-tips-btn:hover .treetip-svg,
+.tree-tips-btn:focus-visible .treetip-svg {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.treetip-tier {
+  fill: var(--green);
+  stroke: var(--green-dark);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.treetip-trunk {
+  fill: #6b4226;
+  stroke: #432a18;
+  stroke-width: 1;
+}
+
+.treetip-star {
+  fill: var(--gold);
+}
+
+.treetip-dot {
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+
+.treetip-dot-red {
+  fill: var(--red);
+}
+
+.treetip-dot-gold {
+  fill: var(--gold);
+}
+
+.treetip-text {
+  font-family: "Mountains of Christmas", "Georgia", serif;
+  fill: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  paint-order: stroke;
+  stroke: var(--green-dark);
+  stroke-width: 2px;
+}
+
+.tree-tips-btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 10px;
 }
 
 /* Blinking Christmas lights */
@@ -563,6 +683,14 @@ nav a:not(.btn):hover {
   background: var(--snow);
 }
 
+.story-teaser .split {
+  align-items: center;
+}
+
+.santa-teaser {
+  justify-self: center;
+}
+
 .story-card {
   display: block;
   width: min(640px, 100%);
@@ -812,6 +940,10 @@ nav a:not(.btn):hover {
 
 .secret-cards .secret-card:nth-child(3) {
   border-left-color: var(--gold);
+}
+
+.secret-cards .secret-card:nth-child(4) {
+  border-left-color: var(--green-dark);
 }
 
 .secret-card .icon {
@@ -1122,6 +1254,12 @@ form .btn {
   width: 72px;
   flex: none;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .35));
+  transition: transform .2s ease;
+}
+
+.footer-brand a:hover .footer-badge,
+.footer-brand a:focus-visible .footer-badge {
+  transform: translateY(-4px);
 }
 
 @media (max-width: 1000px) {
@@ -1179,12 +1317,21 @@ form .btn {
   }
 
   .snowflake-btn {
-    width: 96px;
-    height: 96px;
+    width: 132px;
+    height: 132px;
   }
 
   .snowflake-text {
-    font-size: 17px;
+    font-size: 19px;
+  }
+
+  .tree-tips-btn {
+    width: 58px;
+    height: 96px;
+  }
+
+  .treetip-text {
+    font-size: 9px;
   }
 
   .footer-badge {
@@ -1228,12 +1375,21 @@ form .btn {
   }
 
   .snowflake-btn {
-    width: 92px;
-    height: 92px;
+    width: 112px;
+    height: 112px;
   }
 
   .snowflake-text {
     font-size: 18px;
+  }
+
+  .tree-tips-btn {
+    width: 50px;
+    height: 82px;
+  }
+
+  .treetip-text {
+    font-size: 8px;
   }
 
   .footer-badge {
@@ -1261,5 +1417,15 @@ form .btn {
 
   .lights i {
     animation-name: chase-still;
+  }
+
+  .snowflake-btn {
+    animation: none;
+  }
+
+  .tree-tips-btn {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
